@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+      <th>Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item.childs.each do |k, v| %>
+      <tr>
+        <td><%= Item.find(k).name %></td>
+        <td><%= v %></td>
+        <td><%= link_to 'Destroy', "/items/#{@item.id}/childs/#{k}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

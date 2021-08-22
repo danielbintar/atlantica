@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p id="money"><%= @forms[2] %></p>
+
+<h2>Ingredients</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forms[0].each do |k, v| %>
+      <tr>
+        <td><%= k %></td>
+        <td><%= v %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Create</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forms[1].each do |k, v| %>
+      <tr>
+        <td><%= k %></td>
+        <td><%= v %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

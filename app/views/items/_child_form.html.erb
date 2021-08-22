@@ -1,0 +1,31 @@
+<%= form_with(model: item, local: true, url: "/items/#{item.id}/childs", method: 'POST') do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.select :id, options_for_select(
+      Item.all.to_a.select do
+        |i| i.id.to_s != item.id.to_s && item.childs.map {|k, v| k}.exclude?(i.id.to_s)
+      end.map { |i| [i.name, i.id.to_s] }
+    ) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :count %>
+    <%= form.number_field :count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create Child' %>
+  </div>
+<% end %>

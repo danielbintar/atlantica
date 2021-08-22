@@ -1,0 +1,10 @@
+<%= form_with(local: true, url: "/items/#{item.id}/chemist", method: 'GET') do |form| %>
+  <div class="field">
+    <%= form.label :count %>
+    <%= form.number_field :count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Chemist' %>
+  </div>
+<% end %>
